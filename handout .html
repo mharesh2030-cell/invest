@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نماذج ورشة التفكير التصميمي</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700;800&display=swap');
+
+:root {
+    --primary: #0A2540;
+    --secondary: #2E79B9;
+    --accent: #E6F0FA;
+    --white: #FFFFFF;
+    --text: #333333;
+    --success: #4CAF50;
+    --warning: #FFC107;
+    --danger: #E53935;
+    --gold: #FFD700;
+    --whatsapp: #25D366;
+    --light-bg: #F5F8FC;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Noto Sans Arabic', sans-serif;
+    background: var(--light-bg);
+    color: var(--text);
+    line-height: 1.8;
+    direction: rtl;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+/* ===== PAGE SECTIONS ===== */
+.page-section {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(10,37,64,0.08);
+    border: 1px solid rgba(46,121,185,0.1);
+    page-break-inside: avoid;
+}
+
+.page-section + .page-section {
+    border-top: 4px solid var(--secondary);
+}
+
+/* ===== HEADERS ===== */
+.section-header {
+    text-align: center;
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 3px solid var(--secondary);
+}
+
+.section-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.section-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 5px;
+}
+
+.section-header .subtitle {
+    font-size: 14px;
+    color: #777;
+    font-weight: 400;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* ===== INFO ROW ===== */
+.info-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.info-field {
+    flex: 1;
+    min-width: 200px;
+}
+
+.info-field label {
+    display: block;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.info-field .input-line {
+    border: none;
+    border-bottom: 2px dashed var(--secondary);
+    padding: 8px 4px;
+    font-size: 16px;
+    font-family: inherit;
+    width: 100%;
+    background: transparent;
+    direction: rtl;
+}
+
+.info-field .input-line:focus {
+    outline: none;
+    border-bottom-color: var(--primary);
+    background: var(--accent);
+}
+
+/* ===== EMPATHY MAP ===== */
+.empathy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0;
+    border: 2px solid var(--primary);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.empathy-center {
+    grid-column: 1 / 3;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.empathy-center .user-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.empathy-center h3 {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.empathy-center p {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.empathy-cell {
+    padding: 20px;
+    min-height: 140px;
+    position: relative;
+    border: 1px solid rgba(10,37,64,0.1);
+}
+
+.empathy-cell:nth-child(1) { background: #FFF8E1; }
+.empathy-cell:nth-child(2) { background: #E3F2FD; }
+.empathy-cell:nth-child(4) { background: #E8F5E9; }
+/* Fix typo in class name if needed: .empay-cell -> .empathy-cell */
+.empathy-cell:nth-child(5) { background: #FCE4EC; }
+
+.empathy-cell .cell-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.empathy-cell .cell-title {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 16px;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.empathy-cell .cell-hint {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px;
+    display: block;
+    font-style: italic;
+}
+
+.empathy-cell textarea {
+    width: 100%;
+    min-height: 70px;
+    border: 1px dashed rgba(10,37,64,0.2);
+    border-radius: 8px;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    resize: vertical;
+    background: rgba(255,255,255,0.7);
+    direction: rtl;
+}
+
+.empathy-cell textarea:focus {
+    outline: none;
+    border-color: var(--secondary);
+    background: white;
+}
+
+/* Pain & Gains Side Panels */
+.empathy-side-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.side-panel {
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.side-panel.pains {
+    background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+    border: 1px solid #EF9A9A;
+}
+
+.side-panel.gains {
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+    border: 1px solid #A5D6A7;
+}
+
+.side-panel h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.side-panel .hint {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+.side-panel textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px dashed rgba(0,0,0,0.15);
+    border-radius: 8px;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    resize: vertical;
+    background: rgba(255,255,255,0.6);
+    direction: rtl;
+}
+
+/* ===== PROBLEM STATEMENT ===== */
+.template-box {
+    background: var(--accent);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border-right: 4px solid var(--secondary);
+}
+
+.template-box h4 {
+    font-size: 15px;
+    color: var(--secondary);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.template-box .template-line {
+    font-size: 17px;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 12px;
+    line-height: 2;
+}
+
+.template-box .template-line .blank {
+    display: inline-block;
+    min-width: 150px;
+    border-bottom: 2px solid var(--secondary);
+    margin: 0 4px;
+    text-align: center;
+}
+
+.template-box input[type="text"] {
+    border: none;
+    border-bottom: 2px dashed var(--secondary);
+    padding: 6px 4px;
+    font-size: 15px;
+    font-family: inherit;
+    width: 100%;
+    background: transparent;
+    direction: rtl;
+}
+
+.template-box input[type="text"]:focus {
+    outline: none;
+    border-bottom-style: solid;
+}
+
+.example-box {
+    background: #FFF8E1;
+    border: 1px solid #FFD54F;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 12px;
+}
+
+.example-box .label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--warning);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.example-box p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* ===== HMW ===== */
+.hmw-questions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.hmw-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--accent);
+    border-radius: 10px;
+    padding: 14px 18px;
+}
+
+.hmw-item .num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--secondary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.hmw-item input[type="text"] {
+    flex: 1;
+    border: none;
+    border-bottom: 2px dashed rgba(46,121,185,0.3);
+    padding: 8px 4px;
+    font-size: 15px;
+    font-family: inherit;
+    background: transparent;
+    direction: rtl;
+}
+
+.hmw-item input[type="text"]:focus {
+    outline: none;
+    border-bottom-color: var(--secondary);
+}
+
+.checklist-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--accent);
+    border-radius: 12px;
+}
+
+.checklist-box h4 {
+    font-size: 15px;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.check-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--secondary);
+}
+
+/* ===== IDEATION SHEET ===== */
+.idea-rules {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.rule-card {
+    background: var(--accent);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid rgba(46,121,185,0.15);
+}
+
+.rule-card .rule-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.rule-card h5 {
+    font-size: 14px;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.rule-card p {
+    font-size: 12px;
+    color: #666;
+}
+
+.ideas-input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.idea-input-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+.idea-input-item .idea-num {
+    font-weight: 700;
+    color: var(--secondary);
+    font-size: 14px;
+    width: 24px;
+    flex-shrink: 0;
+}
+
+.idea-input-item input[type="text"] {
+    flex: 1;
+    border: none;
+    padding: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    background: transparent;
+    direction: rtl;
+}
+
+.idea-input-item input[type="text"]:focus {
+    outline: none;
+}
+
+/* Impact/Effort Matrix */
+.matrix-container {
+    margin-top: 24px;
+}
+
+.matrix-container h4 {
+    font-size: 16px;
+    color: var(--primary);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.matrix-grid {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    gap: 0;
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.matrix-corner {
+    background: var(--light-bg);
+    padding: 8px;
+}
+
+.matrix-label-h {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 14px;
+    background: var(--accent);
+    padding: 10px;
+    border: 1px solid rgba(10,37,64,0.1);
+}
+
+.matrix-label-v {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 14px;
+    background: var(--accent);
+    padding: 10px;
+    border: 1px solid rgba(10,37,64,0.1);
+}
+
+.matrix-quadrant {
+    padding: 16px;
+    min-height: 100px;
+    border: 1px solid rgba(10,37,64,0.1);
+    position: relative;
+}
+
+.matrix-quadrant .quad-label {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.matrix-quadrant textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px dashed rgba(0,0,0,0.1);
+    border-radius: 6px;
+    padding: 6px;
+    font-family: inherit;
+    font-size: 12px;
+    resize: vertical;
+    background: rgba(255,255,255,0.5);
+    direction: rtl;
+}
+
+.q1 { background: linear-gradient(135deg, #C8E6C9, #A5D6A7); }
+.q1 .quad-label { color: #2E7D32; }
+.q2 { background: linear-gradient(135deg, #BBDEFB, #90CAF9); }
+.q2 .quad-label { color: #1565C0; }
+.q3 { background: linear-gradient(135deg, #FFE0B2, #FFCC80); }
+.q3 .quad-label { color: #E65100; }
+.q4 { background: linear-gradient(135deg, #FFCDD2, #EF9A9A); }
+.q4 .quad-label { color: #C62828; }
+
+/* ===== PITCH CANVAS ===== */
+.pitch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.pitch-card {
+    background: var(--accent);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(46,121,185,0.15);
+}
+
+.pitch-card h4 {
+    font-size: 15px;
+    color: var(--primary);
+    margin-bottom: 4px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pitch-card .hint {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.pitch-card textarea {
+    width: 100%;
+    min-height: 80px;
+    border: 1px dashed rgba(46,121,185,0.3);
+    border-radius: 8px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 13px;
+    resize: vertical;
+    background: rgba(255,255,255,0.6);
+    direction: rtl;
+}
+
+.pitch-card.full-width {
+    grid-column: 1 / 3;
+}
+
+/* ===== BUTTONS ===== */
+.btn-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: var(--secondary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: var(--success);
+    color: white;
+}
+
+.btn-success:hover {
+    background: #388E3C;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+}
+
+.btn-outline:hover {
+    background: var(--secondary);
+    color: white;
+}
+
+/* ===== FOOTER NOTE ===== */
+.footer-note {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #888;
+    border-top: 1px solid #eee;
+}
+
+.footer-note .hashtag {
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    body { background: white; }
+    .page-section {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+        padding: 20px;
+    }
+    .btn-row { display: none; }
+    textarea, input {
+        border-bottom: 1px solid #333 !important;
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container { padding: 10px; }
+    .page-section { padding: 20px; }
+    .empathy-grid { grid-template-columns: 1fr; }
+    .empathy-center { grid-column: 1; grid-row: auto; }
+    .pitch-grid { grid-template-columns: 1fr; }
+    .pitch-card.full-width { grid-column: 1; }
+    .ideas-input-grid { grid-template-columns: 1fr; }
+    .matrix-grid { grid-template-columns: auto 1fr; }
+}
+
+/* ===== TAB NAVIGATION ===== */
+.tab-nav {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 0;
+    background: var(--primary);
+    border-radius: 16px 16px 0 0;
+    padding: 8px 8px 0;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: rgba(255,255,255,0.7);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px 10px 0 0;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.tab-btn.active {
+    background: var(--white);
+    color: var(--primary);
+}
+
+.tab-btn:hover:not(.active) {
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar {
+    background: var(--accent);
+    border-radius: 20px;
+    padding: 4px;
+    margin: 20px 0;
+}
+
+.progress-fill {
+    height: 8px;
+    background: linear-gradient(90deg, var(--secondary), var(--success));
+    border-radius: 20px;
+    transition: width 0.5s;
+    width: 0%;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* ===== TIMER ===== */
+.timer-widget {
+    text-align: center;
+    margin: 16px 0;
+    padding: 12px;
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.timer-display {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-btn {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    margin: 4px;
+}
+
+.timer-btn.start { background: var(--success); color: white; }
+.timer-btn.stop { background: var(--danger); color: white; }
+.timer-btn.reset { background: var(--warning); color: var(--primary); }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- ===== HEADER ===== -->
+<div class="page-section" style="text-align: center; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white;">
+    <h1 style="font-size: 32px; margin-bottom: 8px; color: white;">🎨 نماذج ورشة التفكير التصميمي</h1>
+    <p style="font-size: 16px; opacity: 0.9;">Design Thinking Workshop - Handouts & Templates</p>
+    
+    <!-- تم إضافة اسم المدرب هنا -->
+    <div style="margin: 12px 0; background: rgba(0,0,0,0.15); display: inline-block; padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.3);">
+        <p style="font-size: 18px; font-weight: bold; color: #fff; margin: 0;">👨‍🏫 المدرب: آ. ابراهيم مهارش</p>
+    </div>
+    <!-- نهاية التعديل -->
+
+    <p style="font-size: 13px; opacity: 0.7; margin-top: 8px;">ورشة عمل التفكير التصميمي لرواد الأعمال المبتدئين</p>
+    <div style="margin-top: 16px;">
+        <span class="badge" style="background: rgba(255,255,255,0.2); color: white;">60 دقيقة</span>
+        <span class="badge" style="background: rgba(255,255,255,0.2); color: white;">5 نماذج تفاعلية</span>
+    </div>
+</div>
+
+<!-- ===== TAB NAVIGATION ===== -->
+<div class="tab-nav">
+<button class="tab-btn active" onclick="switchTab('empathy')">🗺️ خريطة التعاطف</button>
+<button class="tab-btn" onclick="switchTab('problem')">🎯 بيان المشكلة</button>
+<button class="tab-btn" onclick="switchTab('hmw')">💡 كيف يمكننا</button>
+<button class="tab-btn" onclick="switchTab('ideation')">🧠 توليد الأفكار</button>
+<button class="tab-btn" onclick="switchTab('pitch')">🚀 لوحة العرض</button>
+</div>
+
+<!-- ============================================ -->
+<!-- TAB 1: EMPATHY MAP -->
+<!-- ============================================ -->
+<div id="tab-empathy" class="tab-content active">
+<div class="page-section">
+<div class="section-header">
+<span class="badge">المرحلة الأولى</span>
+<h1>🗺️ خريطة التعاطف</h1>
+<h2>Empathy Map</h2>
+<p class="subtitle">افهم المستخدم بعمق — دوّن ما يقوله، يفعله، يفكر فيه، ويشعر به</p>
+</div>
+
+<!-- Participant Info -->
+<div class="info-row">
+<div class="info-field">
+<label>👤 اسم المشارك:</label>
+<input type="text" class="input-line" placeholder="اكتب اسمك هنا">
+</div>
+<div class="info-field">
+<label>💼 المشروع:</label>
+<input type="text" class="input-line" placeholder="اسم مشروعك أو فكرتك">
+</div>
+<div class="info-field">
+<label>📅 التاريخ:</label>
+<input type="text" class="input-line" placeholder="٢٠٢٦/٠١/١٣">
+</div>
+</div>
+
+<!-- Timer -->
+<div class="timer-widget">
+<div class="timer-display" id="timer1">15:00</div>
+<div>
+<button class="timer-btn start" onclick="startTimer('timer1', 15)">▶ ابدأ</button>
+<button class="timer-btn stop" onclick="stopTimer('timer1')">⏸ إيقاف</button>
+<button class="timer-btn reset" onclick="resetTimer('timer1', 15)">↻ إعادة</button>
+</div>
+</div>
+
+<!-- Target User -->
+<div class="template-box" style="background: var(--accent);">
+<h4>👤 المستخدم المستهدف</h4>
+<input type="text" placeholder="مثال: موظف مشغول في الرياض، عمره 30-40 سنة" style="font-size: 16px;">
+</div>
+
+<!-- Empathy Grid -->
+<div class="empathy-grid">
+<!-- Says -->
+<div class="empathy-cell">
+<span class="cell-icon">💬</span>
+<span class="cell-title">يقول</span>
+<span class="cell-hint">ماذا يقول بصوت عالٍ؟ ما الاقتباسات المباشرة؟</span>
+<textarea placeholder="مثال: «ما أقدر ألقى وقت أطبخ»&#10;«الأكل الجاهز غالي ومو صحي»"></textarea>
+</div>
+<!-- Thinks -->
+<div class="empathy-cell">
+<span class="cell-icon">🧠</span>
+<span class="cell-title">يفكر</span>
+<span class="cell-hint">ماذا يدور في ذهنه؟ ما مخاوفه وتطلعاته؟</span>
+<textarea placeholder="مثال: «أتمنى ألقى حل سريع وصحي»&#10;«خايف من تأثير الأكل غير الصحي»"></textarea>
+</div>
+<!-- Center: User -->
+<div class="empathy-center">
+<div class="user-icon">👤</div>
+<h3>المستخدم المستهدف</h3>
+<p>ضع صورة أو وصف المستخدم هنا</p>
+</div>
+<!-- Does -->
+<div class="empathy-cell">
+<span class="cell-icon">👋</span>
+<span class="cell-title">يفعل</span>
+<span class="cell-hint">ما هي أفعاله وسلوكياته الملاحظة؟</span>
+<textarea placeholder="مثال: يطلب وجبات جاهزة 4 مرات بالأسبوع&#10;يتصفح تطبيقات توصيل الطعام يومياً"></textarea>
+</div>
+<!-- Feels -->
+<div class="empathy-cell">
+<span class="cell-icon">❤️</span>
+<span class="cell-title">يشعر</span>
+<span class="cell-hint">ما هي مشاعره وعواطفه؟</span>
+<textarea placeholder="مثال: يشعر بالذنب بعد أكل الوجبات السريعة&#10;قلق من صحته، متحمس لأي حل جديد"></textarea>
+</div>
+</div>
+
+<!-- Pains & Gains -->
+<div class="empathy-side-panels">
+<div class="side-panel pains">
+<h4>😣 الألم (Pains)</h4>
+<p class="hint">التحديات، المخاوف، الإحباطات</p>
+<textarea placeholder="• غلاء الوجبات الصحية&#10;• ضيق الوقت&#10;• عدم الثقة بجودة الأكل&#10;•"></textarea>
+</div>
+<div class="side-panel gains">
+<h4>🏆 المكاسب (Gains)</h4>
+<p class="hint">الاحتياجات، الرغبات، ما يتمنى تحقيقه</p>
+<textarea placeholder="• وجبة صحية وسريعة&#10;• توفير الوقت&#10;• طمأنة على الجودة&#10;•"></textarea>
+</div>
+</div>
+
+<div class="btn-row">
+<button class="btn btn-primary" onclick="window.print()">🖨️ طباعة</button>
+<button class="btn btn-outline" onclick="clearSection('tab-empathy')">🗑️ مسح</button>
+</div>
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- TAB 2: PROBLEM STATEMENT -->
+<!-- ============================================ -->
+<div id="tab-problem" class="tab-content">
+<div class="page-section">
+<div class="section-header">
+<span class="badge">المرحلة الثانية</span>
+<h1>🎯 بيان المشكلة</h1>
+<h2>Problem Statement</h2>
+<p class="subtitle">صِغ المشكلة بوضوح بناءً على رؤى مرحلة التعاطف</p>
+</div>
+
+<!-- Participant Info -->
+<div class="info-row">
+<div class="info-field">
+<label>📝 اسم المشارك:</label>
+<input type="text" class="input-line" placeholder="اكتب اسمك هنا">
+</div>
+<div class="info-field">
+<label>💼 المشروع:</label>
+<input type="text" class="input-line" placeholder="اسم مشروعك">
+</div>
+</div>
+
+<!-- Timer -->
+<div class="timer-widget">
+<div class="timer-display" id="timer2">10:00</div>
+<div>
+<button class="timer-btn start" onclick="startTimer('timer2', 10)">▶ ابدأ</button>
+<button class="timer-btn stop" onclick="stopTimer('timer2')">⏸ إيقاف</button>
+<button class="timer-btn reset" onclick="resetTimer('timer2', 10)">↻ إعادة</button>
+</div>
+</div>
+
+<!-- Template 1: Problem Statement -->
+<div class="template-box">
+<h4>📋 صيغة بيان المشكلة</h4>
+<div class="template-line">
+<span style="color: var(--secondary);">[المستخدم]</span>
+يحتاج إلى
+<span style="color: var(--success);">[احتياج]</span>
+لأن
+<span style="color: var(--warning);">[رؤى مستمدة من التعاطف]</span>
+</div>
+<div style="margin-top: 12px;">
+<input type="text" placeholder="من هو المستخدم؟ مثال: الموظف المشغول في الرياض">
+</div>
+<div style="margin-top: 8px;">
+<input type="text" placeholder="ما الذي يحتاجه؟ مثال: وجبة غداء صحية تُسلم بسرعة">
+</div>
+<div style="margin-top: 8px;">
+<input type="text" placeholder="لماذا يحتاج ذلك؟ مثال: لأنه لا يملك وقتاً ويقلق على صحته">
+</div>
+</div>
+
+<!-- Template 2: HMW Statement -->
+<div class="template-box">
+<h4>❓ السؤال المحفز (How Might We)</h4>
+<div class="template-line">
+كيف يمكننا أن <span style="color: var(--secondary);">[نحقق نتيجة]</span>
+لـ <span style="color: var(--success);">[مستخدم محدد]</span>
+في <span style="color: var(--warning);">[سياق معين]</span> ؟
+</div>
+<div style="margin-top: 12px;">
+<input type="text" placeholder="كيف يمكننا أن ...">
+</div>
+</div>
+
+<!-- Example -->
+<div class="example-box">
+<span class="label">💡 مثال عملي:</span>
+<p>
+<strong>بدلاً من:</strong> نريد تطبيقاً لطلب الطعام<br>
+<strong>نقول:</strong> كيف يمكننا مساعدة الموظفين المشغولين في الرياض على الحصول على غداء صحي خلال ١٥ دقيقة؟
+</p>
+</div>
+
+<!-- Insight Summary -->
+<div class="template-box" style="margin-top: 16px; background: #F3E5F5; border-right-color: #9C27B0;">
+<h4 style="color: #9C27B0;">🔍 الرؤى المستخلصة من التعاطف</h4>
+<textarea style="width: 100%; min-height: 80px; border: 1px dashed rgba(156,39,176,0.3); border-radius: 8px; padding: 10px; font-family: inherit; font-size: 13px; resize: vertical; background: rgba(255,255,255,0.6); direction: rtl;" placeholder="• الموظفون يعملون 10+ ساعات يومياً&#10;• 80% يطلبون أكل جاهز يومياً&#10;• القلق الصحي يزداد مع تقدم العمر"></textarea>
+</div>
+
+<div class="btn-row">
+<button class="btn btn-primary" onclick="window.print()">🖨️ طباعة</button>
+<button class="btn btn-outline" onclick="clearSection('tab-problem')">🗑️ مسح</button>
+</div>
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- TAB 3: HOW MIGHT WE -->
+<!-- ============================================ -->
+<div id="tab-hmw" class="tab-content">
+<div class="page-section">
+<div class="section-header">
+<span class="badge">أداة تحويلية</span>
+<h1>💡 كيف يمكننا (How Might We)</h1>
+<h2>تحويل المشكلة إلى فرص إبداعية</h2>
+<p class="subtitle">حوّل بيان المشكلة إلى أسئلة مفتوحة تُطلق العنان للإبداع</p>
+</div>
+
+<!-- Participant Info -->
+<div class="info-row">
+<div class="info-field">
+<label>📝 اسم المشارك:</label>
+<input type="text" class="input-line" placeholder="اكتب اسمك هنا">
+</div>
+<div class="info-field">
+<label>🎯 المشكلة الأصلية:</label>
+<input type="text" class="input-line" placeholder="اكتب بيان المشكلة هنا">
+</div>
+</div>
+
+<!-- Timer -->
+<div class="timer-widget">
+<div class="timer-display" id="timer3">08:00</div>
+<div>
+<button class="timer-btn start" onclick="startTimer('timer3', 8)">▶ ابدأ</button>
+<button class="timer-btn stop" onclick="stopTimer('timer3')">⏸ إيقاف</button>
+<button class="timer-btn reset" onclick="resetTimer('timer3', 8)">↻ إعادة</button>
+</div>
+</div>
+
+<!-- HMW Questions -->
+<h3 style="color: var(--primary); margin-bottom: 12px; font-size: 16px;">📝 صِغ أسئلة "كيف يمكننا":</h3>
+
+<div class="hmw-questions">
+<div class="hmw-item">
+<span class="num">١</span>
+<input type="text" placeholder="كيف يمكننا أن...">
+</div>
+<div class="hmw-item">
+<span class="num">٢</span>
+<input type="text" placeholder="كيف يمكننا أن...">
+</div>
+<div class="hmw-item">
+<span class="num">٣</span>
+<input type="text" placeholder="كيف يمكننا أن...">
+</div>
+<div class="hmw-item">
+<span class="num">٤</span>
+<input type="text" placeholder="كيف يمكننا أن...">
+</div>
+<div class="hmw-item">
+<span class="num">٥</span>
+<input type="text" placeholder="كيف يمكننا أن...">
+</div>
+<div class="hmw-item">
+<span class="num">٦</span>
+<input type="text" placeholder="كيف يمكننا أن...">
+</div>
+<div class="hmw-item">
+<span class="num">٧</span>
+<input type="text" placeholder="كيف يمكننا أن...">
+</div>
+</div>
+
+<!-- Selection -->
+<div class="template-box" style="margin-top: 20px; background: #E8F5E9; border-right-color: var(--success);">
+<h4 style="color: var(--success);">✅ اختر أفضل 3 أسئلة للتفكير الإبداعي:</h4>
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px;">
+<input type="text" placeholder="السؤال الأول">
+<input type="text" placeholder="السؤال الثاني">
+<input type="text" placeholder="السؤال الثالث">
+</div>
+</div>
+
+<!-- Quality Checklist -->
+<div class="checklist-box">
+<h4>📋 قائمة التحقق — هل سؤالك جيد؟</h4>
+<div class="check-item">
+<input type="checkbox" id="hmw1">
+<label for="hmw1">يبدأ بـ "كيف يمكننا" ويفتح باب الإبداع</label>
+</div>
+<div class="check-item">
+<input type="checkbox" id="hmw2">
+<label for="hmw2">يركز على المستخدم وليس على الحل</label>
+</div>
+<div class="check-item">
+<input type="checkbox" id="hmw3">
+<label for="hmw3">واسع بما يكفي للإبداع وضيق بما يكفي للتنفيذ</label>
+</div>
+<div class="check-item">
+<input type="checkbox" id="hmw4">
+<label for="hmw4">مبني على رؤى حقيقية من مرحلة التعاطف</label>
+</div>
+<div class="check-item">
+<input type="checkbox" id="hmw5">
+<label for="hmw5">لا يقيد بـ "تطبيق" أو "تقنية" محددة</label>
+</div>
+</div>
+
+<!-- Examples -->
+<div class="example-box" style="margin-top: 16px;">
+<span class="label">💡 أمثلة على أسئلة HMW جيدة:</span>
+<p>
+✅ كيف يمكننا مساعدة الموظفين المشغولين على الحصول على غذاء صحي خلال وقت الغداء؟<br>
+✅ كيف يمكننا جعل طلب الطعام الصحي أسهل من الوجبات السريعة؟<br>
+✅ كيف يمكننا تقليل الحواجز النفسية المرتبطة بتغيير العادات الغذائية؟
+</p>
+</div>
+
+<div class="btn-row">
+<button class="btn btn-primary" onclick="window.print()">🖨️ طباعة</button>
+<button class="btn btn-outline" onclick="clearSection('tab-hmw')">🗑️ مسح</button>
+</div>
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- TAB 4: IDEATION SHEET -->
+<!-- ============================================ -->
+<div id="tab-ideation" class="tab-content">
+<div class="page-section">
+<div class="section-header">
+<span class="badge">المرحلة الثالثة</span>
+<h1>🧠 توليد الأفكار</h1>
+<h2>Ideation Sheet</h2>
+<p class="subtitle">ولّد أكبر عدد ممكن من الأفكار — الكمية قبل الجودة!</p>
+</div>
+
+<!-- Participant Info -->
+<div class="info-row">
+<div class="info-field">
+<label>📝 اسم المشارك:</label>
+<input type="text" class="input-line" placeholder="اكتب اسمك هنا">
+</div>
+<div class="info-field">
+<label>💡 السؤال المحفز:</label>
+<input type="text" class="input-line" placeholder="كيف يمكننا أن...">
+</div>
+</div>
+
+<!-- Timer -->
+<div class="timer-widget">
+<div class="timer-display" id="timer4">10:00</div>
+<div>
+<button class="timer-btn start" onclick="startTimer('timer4', 10)">▶ ابدأ</button>
+<button class="timer-btn stop" onclick="stopTimer('timer4')">⏸ إيقاف</button>
+<button class="timer-btn reset" onclick="resetTimer('timer4', 10)">↻ إعادة</button>
+</div>
+<p style="font-size: 12px; color: #888; margin-top: 4px;">الهدف: 20 فكرة في 10 دقائق!</p>
+</div>
+
+<!-- Rules -->
+<div class="idea-rules">
+<div class="rule-card">
+<span class="rule-icon">🚫</span>
+<h5>لا تنتقد</h5>
+<p>لا تنتقد أي فكرة خلال جلسة العصف الذهني</p>
+</div>
+<div class="rule-card">
+<span class="rule-icon">🔢</span>
+<h5>الكمية أولاً</h5>
+<p>هدفنا 20 فكرة في 10 دقائق — ليس فكرة واحدة مثالية</p>
+</div>
+<div class="rule-card">
+<span class="rule-icon">🤪</span>
+<h5>فكرة الأسوأ</h5>
+<p>ما هو أسوأ حل ممكن؟ ثم اقلبها!</p>
+</div>
+<div class="rule-card">
+<span class="rule-icon">🔗</span>
+<h5>ادمج الأفكار</h5>
+<p>اجمع بين فكرتين متناقضتين لإيجاد حل جديد</p>
+</div>
+</div>
+
+<!-- Brainstorming Area -->
+<h3 style="color: var(--primary); margin-bottom: 12px; font-size: 16px;">✏️ اكتب أفكارك هنا (دون توقف!):</h3>
+
+<div class="ideas-input-grid">
+<div class="idea-input-item"><span class="idea-num">١</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">٢</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">٣</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">٤</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">٥</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">٦</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">٧</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">٨</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">٩</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">١٠</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">١١</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">١٢</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">١٣</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">١٤</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">١٥</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">١٦</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">١٧</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">١٨</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">١٩</span><input type="text" placeholder="فكرة..."></div>
+<div class="idea-input-item"><span class="idea-num">٢٠</span><input type="text" placeholder="فكرة..."></div>
+</div>
+
+<!-- Clustering -->
+<div class="template-box" style="margin-top: 20px;">
+<h4>📦 تجميع الأفكار المتشابهة</h4>
+<p style="font-size: 13px; color: #666; margin-bottom: 10px;">جمّع الأفكار المتشابهة في مجموعات وسمِّ كل مجموعة:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+<input type="text" placeholder="المجموعة ١: ..." style="border: none; border-bottom: 2px dashed var(--secondary); padding: 8px 4px; font-size: 14px; font-family: inherit; background: transparent; direction: rtl;">
+<input type="text" placeholder="المجموعة ٢: ..." style="border: none; border-bottom: 2px dashed var(--secondary); padding: 8px 4px; font-size: 14px; font-family: inherit; background: transparent; direction: rtl;">
+<input type="text" placeholder="المجموعة ٣: ..." style="border: none; border-bottom: 2px dashed var(--secondary); padding: 8px 4px; font-size: 14px; font-family: inherit; background: transparent; direction: rtl;">
+</div>
+</div>
+
+<!-- Impact/Effort Matrix -->
+<div class="matrix-container">
+<h4>📊 مصفوفة التأثير / الجهد</h4>
+<p style="text-align: center; font-size: 13px; color: #888; margin-bottom: 16px;">صنّف أفكارك حسب التأثير وسهولة التنفيذ</p>
+
+<div class="matrix-grid">
+<div class="matrix-corner"></div>
+<div class="matrix-label-h">⬅️ تأثير منخفض</div>
+<div class="matrix-label-h">تأثير مرتفع ➡️</div>
+
+<div class="matrix-label-v">⬆️ سهل التنفيذ</div>
+<div class="matrix-quadrant q3">
+<span class="quad-label">🟡 سريع wins</span>
+<textarea placeholder="أفكار منخفضة التأثير، سهلة التنفيذ"></textarea>
+</div>
+<div class="matrix-quadrant q1">
+<span class="quad-label">🟢 ابدأ هنا! ⭐</span>
+<textarea placeholder="أفكار عالية التأثير، سهلة التنفيذ"></textarea>
+</div>
+
+<div class="matrix-label-v">⬇️ صعب التنفيذ</div>
+<div class="matrix-quadrant q4">
+<span class="quad-label">🔴 تجنبها</span>
+<textarea placeholder="أفكار منخفضة التأثير، صعبة التنفيذ"></textarea>
+</div>
+<div class="matrix-quadrant q2">
+<span class="quad-label">🔵 خطّط لها لاحقاً</span>
+<textarea placeholder="أفكار عالية التأثير، صعبة التنفيذ"></textarea>
+</div>
+</div>
+</div>
+
+<!-- Selected Idea -->
+<div class="template-box" style="margin-top: 20px; background: #FFF3E0; border-right-color: #FF9800;">
+<h4 style="color: #E65100;">🎯 الفكرة المختارة للتطوير</h4>
+<input type="text" placeholder="ما هي الفكرة التي ستطورها؟" style="font-size: 16px; margin-top: 8px;">
+<div style="margin-top: 10px;">
+<label style="font-size: 13px; color: #666;">لماذا اخترت هذه الفكرة؟</label>
+<textarea style="width: 100%; min-height: 50px; border: 1px dashed rgba(230,81,0,0.3); border-radius: 8px; padding: 8px; font-family: inherit; font-size: 13px; resize: vertical; background: rgba(255,255,255,0.6); direction: rtl; margin-top: 6px;" placeholder="اشرح سبب اختيارك..."></textarea>
+</div>
+</div>
+
+<div class="btn-row">
+<button class="btn btn-primary" onclick="window.print()">🖨️ طباعة</button>
+<button class="btn btn-outline" onclick="clearSection('tab-ideation')">🗑️ مسح</button>
+</div>
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- TAB 5: PITCH CANVAS -->
+<!-- ============================================ -->
+<div id="tab-p
