@@ -3,714 +3,748 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مصفوفة المفاضلة الاستراتيجية — جمعية سندكم</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Investment & Impact Profile — جمعية سندكم</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800&display=swap');
+
 :root {
-  --bg: #F7F5F0;
-  --surface: #FFFFFF;
-  --surface2: #F0EDE6;
-  --border: #E2DDD4;
-  --border2: #CFC9BE;
-  --text-primary: #1A1814;
-  --text-secondary: #6B6459;
-  --text-tertiary: #9E9589;
-  --accent: #1D6A4A;
-  --accent-light: #E3F2EC;
-  --accent-mid: #2A8A60;
-  --amber: #B87D1A;
-  --amber-light: #FDF3E0;
-  --red: #A33030;
-  --red-light: #FAEAEA;
-  --purple: #4A3A8A;
-  --purple-light: #EEEAF8;
-  --teal: #1A6A6A;
-  --teal-light: #E3F2F2;
-  --gold: #C9A84C;
-  --silver: #8A8A8A;
-  --bronze: #A0694A;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --navy: #0D2240;
+  --teal: #1B8A7A;
+  --gold: #C9A227;
+  --light-teal: #E8F5F3;
+  --light-blue: #EAF1F8;
+  --white: #FFFFFF;
+  --gray: #F4F7FB;
+  --text: #1A2435;
+  --muted: #6B7A8D;
+  --border: #D1DDE8;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: 'Tajawal', sans-serif;
-  background: var(--bg);
-  color: var(--text-primary);
-  min-height: 100vh;
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  background: #F0F4F8;
+  color: var(--text);
   direction: rtl;
 }
 
-.page-header {
-  background: var(--text-primary);
-  color: #F7F5F0;
-  padding: 2.5rem 2rem 2rem;
-  position: relative;
+/* PRINT STYLES */
+@media print {
+  body { background: white; }
+  .page { box-shadow: none; margin: 0; border-radius: 0; page-break-after: always; }
+  .page:last-child { page-break-after: avoid; }
+  .no-print { display: none; }
+  @page { margin: 0; size: A4; }
+}
+
+/* PRINT BUTTON */
+.print-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  background: var(--navy); padding: 10px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.print-bar span { color: #fff; font-size: 14px; font-family: 'Cairo', sans-serif; }
+.btn-print {
+  background: var(--gold); color: var(--navy); border: none;
+  padding: 8px 24px; border-radius: 6px; font-family: 'Cairo', sans-serif;
+  font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s;
+}
+.btn-print:hover { background: #E8B83A; }
+
+.wrapper { padding: 56px 20px 40px; max-width: 960px; margin: 0 auto; }
+
+/* PAGE */
+.page {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(13,34,64,0.10);
+  margin-bottom: 24px;
   overflow: hidden;
-}
-.page-header::before {
-  content: '';
-  position: absolute;
-  top: -40px; left: -40px;
-  width: 200px; height: 200px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.06);
-}
-.page-header::after {
-  content: '';
-  position: absolute;
-  bottom: -60px; right: -20px;
-  width: 260px; height: 260px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.04);
-}
-.header-tag {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.45);
-  text-transform: uppercase;
-  border: 0.5px solid rgba(255,255,255,0.15);
-  padding: 4px 10px;
-  border-radius: 20px;
-  margin-bottom: 14px;
-}
-.page-header h1 {
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 6px;
   position: relative;
-  z-index: 1;
-}
-.page-header p {
-  font-size: 13px;
-  color: rgba(255,255,255,0.45);
-  position: relative;
-  z-index: 1;
 }
 
-.main { padding: 2rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+/* COVER PAGE */
+.cover {
+  background: linear-gradient(160deg, var(--navy) 0%, #1A3A5C 60%, #0A1A30 100%);
+  min-height: 700px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center; padding: 60px 48px;
+  position: relative;
+}
+.cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, rgba(201,162,39,0.03) 0px, rgba(201,162,39,0.03) 1px, transparent 1px, transparent 40px);
+}
+.cover-logo-area { margin-bottom: 32px; }
+.org-name-en {
+  font-size: 52px; font-weight: 900; color: var(--gold); letter-spacing: 6px;
+  text-transform: uppercase; font-family: 'Cairo', sans-serif;
+}
+.org-name-ar {
+  font-size: 24px; font-weight: 600; color: rgba(255,255,255,0.85);
+  margin-top: 8px;
+}
+.cover-divider {
+  width: 80px; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--teal));
+  margin: 28px auto; border-radius: 2px;
+}
+.cover-title-en {
+  font-size: 38px; font-weight: 900; color: #fff; line-height: 1.2;
+}
+.cover-title-ar {
+  font-size: 28px; font-weight: 700; color: var(--teal); margin-top: 10px;
+}
+.cover-sub {
+  font-size: 15px; color: rgba(255,255,255,0.6); margin-top: 20px;
+}
+.cover-stats {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 16px; margin-top: 40px; width: 100%;
+}
+.cover-stat {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(201,162,39,0.3);
+  border-radius: 8px; padding: 18px 12px;
+}
+.cover-stat-val { font-size: 36px; font-weight: 900; color: var(--gold); }
+.cover-stat-lbl { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+.cover-footer {
+  margin-top: 36px;
+  font-size: 12px; color: rgba(255,255,255,0.4);
+  font-style: italic;
+}
 
+/* SECTION HEADER */
 .section-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
+  background: var(--navy);
+  padding: 18px 36px;
+  display: flex; align-items: center; gap: 14px;
 }
-.step-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  background: var(--text-primary);
-  color: var(--bg);
-  font-size: 12px;
-  font-weight: 700;
-  flex-shrink: 0;
+.section-num {
+  background: var(--gold); color: var(--navy);
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 16px; flex-shrink: 0;
 }
-.section-header h2 {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-.section-note {
-  font-size: 12px;
-  color: var(--text-tertiary);
-  margin-bottom: 16px;
-  line-height: 1.6;
-  padding-right: 38px;
-}
+.section-title-ar { font-size: 20px; font-weight: 700; color: #fff; }
+.section-title-en { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 2px; }
 
-/* Criteria Grid */
-.criteria-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 10px;
-  margin-bottom: 1rem;
-}
-.criterion-card {
-  background: var(--surface);
-  border: 0.5px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 14px 16px;
-  transition: box-shadow 0.2s;
-}
-.criterion-card:hover { box-shadow: var(--shadow-sm); }
-.criterion-icon {
-  font-size: 18px;
-  margin-bottom: 8px;
-  display: block;
-}
-.criterion-name {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 4px;
-}
-.criterion-desc {
-  font-size: 11px;
-  color: var(--text-tertiary);
-  line-height: 1.5;
-  margin-bottom: 12px;
-}
-.weight-control {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.weight-control input[type=range] {
-  flex: 1;
-  height: 3px;
-  -webkit-appearance: none;
-  appearance: none;
-  background: var(--border2);
-  border-radius: 2px;
-  outline: none;
-  cursor: pointer;
-}
-.weight-control input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: var(--text-primary);
-  cursor: pointer;
-}
-.weight-display {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-primary);
-  min-width: 36px;
-  text-align: left;
-}
+/* CONTENT */
+.content { padding: 36px 40px; }
 
-/* Total bar */
-.total-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--surface);
-  border: 0.5px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 12px 16px;
-  margin-bottom: 2rem;
-  font-size: 13px;
+/* KPI GRID */
+.kpi-grid { display: grid; gap: 12px; margin: 20px 0; }
+.kpi-grid-4 { grid-template-columns: repeat(4,1fr); }
+.kpi-grid-3 { grid-template-columns: repeat(3,1fr); }
+.kpi-grid-2 { grid-template-columns: repeat(2,1fr); }
+.kpi-box {
+  background: var(--light-teal);
+  border: 1px solid rgba(27,138,122,0.25);
+  border-radius: 10px; padding: 20px 14px; text-align: center;
 }
-.total-label { color: var(--text-secondary); flex: 1; font-weight: 500; }
-.total-num {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-.total-status {
-  font-size: 11px;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-weight: 500;
-}
-.status-ok { background: var(--accent-light); color: var(--accent); }
-.status-warn { background: var(--red-light); color: var(--red); }
+.kpi-val { font-size: 38px; font-weight: 900; color: var(--navy); line-height: 1; }
+.kpi-lbl { font-size: 12px; color: var(--muted); margin-top: 6px; font-weight: 600; }
+.kpi-sub { font-size: 11px; color: var(--teal); margin-top: 3px; }
 
-/* Matrix Table */
-.matrix-container {
-  background: var(--surface);
-  border: 0.5px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow-sm);
+/* 2-COL */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 20px 0; }
+.col-box {
+  background: var(--gray);
+  border-radius: 8px; padding: 20px;
+  border-right: 4px solid var(--teal);
 }
-.matrix-scroll { overflow-x: auto; }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 700px;
+.col-box.accent { border-right-color: var(--gold); }
+.col-box.navy { border-right-color: var(--navy); }
+
+/* HEADINGS */
+h2 { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--teal); }
+h3 { font-size: 16px; font-weight: 700; color: var(--teal); margin-bottom: 8px; }
+p { font-size: 14px; line-height: 1.8; color: var(--text); margin-bottom: 10px; }
+
+/* BULLETS */
+ul { list-style: none; padding: 0; }
+ul li { font-size: 13px; line-height: 1.7; color: var(--text); padding: 4px 0 4px 0; display: flex; gap: 8px; align-items: flex-start; }
+ul li::before { content: '●'; color: var(--teal); font-size: 10px; margin-top: 4px; flex-shrink: 0; }
+
+/* TABLES */
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+thead tr { background: var(--navy); }
+thead th { color: #fff; padding: 11px 14px; font-weight: 600; text-align: right; font-size: 13px; }
+tbody tr:nth-child(even) { background: var(--gray); }
+tbody tr:nth-child(odd) { background: #fff; }
+tbody td { padding: 10px 14px; color: var(--text); border-bottom: 1px solid var(--border); vertical-align: top; }
+tbody tr:hover { background: var(--light-teal); }
+
+/* BEFORE/AFTER */
+.before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 20px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.before { background: #FFF5F5; padding: 20px; }
+.after { background: var(--light-teal); padding: 20px; border-right: 4px solid var(--teal); }
+.ba-title { font-size: 15px; font-weight: 700; text-align: center; margin-bottom: 12px; padding-bottom: 8px; }
+.before .ba-title { color: #C0392B; border-bottom: 2px solid #C0392B; }
+.after .ba-title { color: var(--teal); border-bottom: 2px solid var(--teal); }
+
+/* OPPORTUNITY BOX */
+.opp-box {
+  border-radius: 10px; overflow: hidden; margin: 16px 0;
+  border: 1px solid var(--border);
 }
-thead tr { background: #F0EDE6; }
-th {
-  padding: 10px 12px;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--text-secondary);
+.opp-header { padding: 14px 20px; font-size: 16px; font-weight: 700; }
+.opp-header.gold { background: var(--gold); color: var(--navy); }
+.opp-header.teal { background: var(--teal); color: #fff; }
+.opp-header.navy { background: var(--navy); color: #fff; }
+.opp-body table { margin: 0; }
+
+/* ROADMAP */
+.roadmap-item { display: grid; grid-template-columns: 90px 1fr; gap: 0; margin: 14px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.rm-phase { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 10px; text-align: center; }
+.rm-phase.p1 { background: var(--gold); }
+.rm-phase.p2 { background: var(--teal); }
+.rm-phase.p3 { background: var(--navy); }
+.rm-phase-num { font-size: 36px; font-weight: 900; }
+.rm-phase.p1 .rm-phase-num, .rm-phase.p1 .rm-yr { color: var(--navy); }
+.rm-phase.p2 .rm-phase-num, .rm-phase.p2 .rm-yr,
+.rm-phase.p3 .rm-phase-num, .rm-phase.p3 .rm-yr { color: #fff; }
+.rm-yr { font-size: 13px; font-weight: 600; margin-top: 4px; }
+.rm-content { padding: 20px 24px; background: var(--gray); }
+.rm-content h3 { margin-bottom: 10px; }
+.rm-kpi { margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--teal); background: rgba(27,138,122,0.08); padding: 6px 10px; border-radius: 4px; }
+
+/* CONTACT BOX */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+.contact-card {
+  border-radius: 10px; padding: 24px;
   text-align: center;
-  border-bottom: 0.5px solid var(--border);
-  border-left: 0.5px solid var(--border);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
 }
-th:first-child { text-align: right; border-left: none; min-width: 160px; }
-th .weight-tag {
-  display: inline-block;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
-  color: var(--text-tertiary);
-  margin-top: 2px;
-}
-tbody tr { border-bottom: 0.5px solid var(--border); transition: background 0.15s; }
-tbody tr:last-child { border-bottom: none; }
-tbody tr:hover { background: #FAFAF8; }
-td {
-  padding: 10px 12px;
-  text-align: center;
-  border-left: 0.5px solid var(--border);
-  vertical-align: middle;
-}
-td:first-child { text-align: right; border-left: none; }
-.goal-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.4;
-  display: block;
-}
-.goal-index {
-  font-size: 10px;
-  color: var(--text-tertiary);
-  display: block;
-  margin-bottom: 2px;
-}
+.contact-card.teal { background: var(--light-teal); border: 2px solid rgba(27,138,122,0.3); }
+.contact-card.navy { background: var(--light-blue); border: 2px solid rgba(13,34,64,0.2); }
+.contact-card-name { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+.contact-item { font-size: 13px; color: var(--muted); margin: 5px 0; }
+.contact-item a { color: var(--teal); text-decoration: none; }
 
-/* Rating buttons */
-.rating-group {
-  display: flex;
-  gap: 3px;
-  justify-content: center;
+/* CTA BOX */
+.cta-box {
+  background: linear-gradient(135deg, var(--navy) 0%, #1A3A5C 100%);
+  border-radius: 10px; padding: 36px; text-align: center; margin: 20px 0;
 }
-.rating-btn {
-  width: 24px; height: 24px;
-  border-radius: var(--radius-sm);
-  border: 0.5px solid var(--border);
-  background: var(--bg);
-  font-size: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  color: var(--text-tertiary);
-  transition: all 0.12s;
-  font-family: 'IBM Plex Mono', monospace;
-}
-.rating-btn:hover { border-color: var(--border2); background: var(--surface2); color: var(--text-primary); }
-.r1.active { background: #FAEAEA; color: #A33030; border-color: #D06060; }
-.r2.active { background: #FDF3E0; color: #8A5A10; border-color: #C9901A; }
-.r3.active { background: #FFF8E8; color: #7A6010; border-color: #C9A84C; }
-.r4.active { background: var(--accent-light); color: #0F5A38; border-color: #2A8A60; }
-.r5.active { background: var(--purple-light); color: #2A1A6A; border-color: #6A5AB0; }
+.cta-title { font-size: 32px; font-weight: 900; color: var(--gold); margin-bottom: 12px; }
+.cta-sub { font-size: 16px; color: rgba(255,255,255,0.85); line-height: 1.7; }
+.cta-body { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 10px; }
 
-/* Score cells */
-.score-cell {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
-  font-weight: 700;
+/* PARTNER TYPES */
+.partner-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 16px 0; }
+.partner-card {
+  border-radius: 8px; padding: 16px; text-align: center;
+  background: var(--gray); border-top: 4px solid var(--teal);
 }
-.score-high { color: var(--accent); background: var(--accent-light); }
-.score-mid { color: var(--amber); background: var(--amber-light); }
-.score-low { color: var(--red); background: var(--red-light); }
+.partner-card.gold { border-top-color: var(--gold); }
+.partner-card h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.partner-card p { font-size: 12px; color: var(--muted); margin: 0; }
 
-/* Rank badge */
-.rank-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px; height: 26px;
-  border-radius: 50%;
-  font-size: 12px;
-  font-weight: 700;
-}
-.rank-1 { background: #FDF0C0; color: #7A5C00; border: 1px solid #C9A84C; }
-.rank-2 { background: #EFEFEF; color: #4A4A4A; border: 1px solid #A0A0A0; }
-.rank-3 { background: #F5E8E0; color: #7A3A1A; border: 1px solid #C08060; }
-.rank-4 { background: var(--teal-light); color: var(--teal); border: 1px solid #60B0B0; }
-.rank-5 { background: var(--purple-light); color: var(--purple); border: 1px solid #9080C0; }
+/* SROI BOXES */
+.sroi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 16px 0; }
+.sroi-box { background: var(--light-teal); border: 1px solid rgba(27,138,122,0.25); border-radius: 10px; padding: 20px; text-align: center; }
+.sroi-val { font-size: 44px; font-weight: 900; color: var(--navy); }
+.sroi-lbl { font-size: 13px; font-weight: 600; color: var(--text); margin-top: 6px; }
+.sroi-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
 
-/* Results */
-.results-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
-  margin-bottom: 1.5rem;
-}
-.result-card {
-  background: var(--surface);
-  border: 0.5px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 14px 16px;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.result-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-.result-card.winner {
-  border: 1.5px solid var(--accent-mid);
-  background: linear-gradient(135deg, #F8FFFC 0%, #FFFFFF 100%);
-}
-.result-card.winner-badge {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 6px;
-  display: block;
-}
-.result-rank-label {
-  font-size: 10px;
-  color: var(--text-tertiary);
-  margin-bottom: 4px;
-  display: block;
-}
-.result-name {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.4;
-  margin-bottom: 10px;
-}
-.score-bar-wrap {
-  height: 3px;
-  background: var(--border);
-  border-radius: 2px;
-  margin-bottom: 6px;
-  overflow: hidden;
-}
-.score-bar-fill {
-  height: 3px;
-  border-radius: 2px;
-  background: var(--accent);
-  transition: width 0.5s ease;
-}
-.result-card.rank2 .score-bar-fill { background: var(--silver); }
-.result-card.rank3 .score-bar-fill { background: var(--bronze); }
-.result-card.rank4 .score-bar-fill { background: var(--teal); }
-.result-card.rank5 .score-bar-fill { background: var(--purple); }
-.result-score {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--text-tertiary);
-}
+/* ALIGNMENT TABLE */
+.v2030-row { display: grid; grid-template-columns: 2fr 2fr 1.5fr; border-bottom: 1px solid var(--border); }
+.v2030-row:first-child { background: var(--navy); border-radius: 8px 8px 0 0; }
+.v2030-row:first-child div { color: #fff; font-weight: 700; }
+.v2030-row:nth-child(even) { background: var(--gray); }
+.v2030-row div { padding: 12px 16px; font-size: 13px; }
 
-/* Recommendation box */
-.rec-box {
-  background: var(--text-primary);
-  color: rgba(247,245,240,0.85);
-  border-radius: var(--radius-lg);
-  padding: 20px 22px;
-  font-size: 13px;
-  line-height: 1.7;
-  margin-bottom: 2rem;
-}
-.rec-box strong { color: #F7F5F0; font-weight: 700; }
-.rec-title {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 8px;
-  display: block;
-}
+.badge { display: inline-block; background: var(--teal); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-left: 6px; }
+.badge.gold { background: var(--gold); color: var(--navy); }
 
-/* Reset button */
-.reset-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
-  border-radius: var(--radius-md);
-  border: 0.5px solid var(--border2);
-  background: var(--surface);
-  color: var(--text-secondary);
-  font-family: 'Tajawal', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.15s;
-  margin-bottom: 2rem;
-}
-.reset-btn:hover { background: var(--surface2); color: var(--text-primary); }
-
-/* Divider */
-.divider {
-  height: 0.5px;
-  background: var(--border);
-  margin: 2rem 0;
-}
-
-/* Footer */
-.page-footer {
-  text-align: center;
-  padding: 1.5rem;
-  font-size: 11px;
-  color: var(--text-tertiary);
-  border-top: 0.5px solid var(--border);
-  margin-top: 1rem;
-}
+footer-note { font-size: 11px; color: var(--muted); text-align: center; display: block; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); font-style: italic; }
 </style>
 </head>
 <body>
 
-<div class="page-header">
-  <div class="header-tag">أداة تفاعلية — التخطيط الاستراتيجي</div>
-  <h1>مصفوفة المفاضلة بين الأهداف الاستراتيجية</h1>
-  <p>جمعية سندكم لرعاية الأيتام ذوي الظروف الخاصة</p>
+<div class="print-bar no-print">
+  <span>Investment & Impact Profile — جمعية سندكم | للطباعة اضغط Ctrl+P</span>
+  <button class="btn-print" onclick="window.print()">🖨 طباعة / حفظ PDF</button>
 </div>
 
-<div class="main">
+<div class="wrapper">
 
-  <!-- Section 1: Weights -->
+<!-- ════════════════════════════════════════ COVER ════════════════ -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-logo-area">
+      <div class="org-name-en">SANADCOM</div>
+      <div class="org-name-ar">جمعية سندكم لرعاية الأطفال ذوي الظروف الخاصة</div>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-title-en">Investment &amp; Impact Profile</div>
+    <div class="cover-title-ar">ملف الاستثمار والأثر الاجتماعي</div>
+    <div class="cover-sub">منطقة مكة المكرمة &nbsp;|&nbsp; المملكة العربية السعودية &nbsp;|&nbsp; 2025 – 2027</div>
+    <div class="cover-stats">
+      <div class="cover-stat"><div class="cover-stat-val">+75</div><div class="cover-stat-lbl">أسرة مستفيدة</div></div>
+      <div class="cover-stat"><div class="cover-stat-val">5</div><div class="cover-stat-lbl">برامج متكاملة</div></div>
+      <div class="cover-stat"><div class="cover-stat-val">14</div><div class="cover-stat-lbl">محافظة في النطاق</div></div>
+    </div>
+    <div class="cover-footer">Prepared by: ARKAN Sustainable Investment — أركان الاستدامة للاستثمار</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ SEC 1: EXEC SUMMARY ══ -->
+<div class="page">
   <div class="section-header">
-    <div class="step-badge">١</div>
-    <h2>اضبط أوزان معايير التقييم</h2>
+    <div class="section-num">01</div>
+    <div><div class="section-title-ar">الملخص التنفيذي</div><div class="section-title-en">Executive Summary</div></div>
   </div>
-  <p class="section-note">حرّك الشريط لتعديل وزن كل معيار بما يعكس أولويات جمعيتك. مجموع الأوزان يجب أن يساوي 100%.</p>
+  <div class="content">
+    <p>جمعية سندكم لرعاية الأطفال ذوي الظروف الخاصة جمعية خيرية متخصصة مرخّصة من المركز الوطني لتنمية القطاع غير الربحي (رقم الترخيص 5510، تاريخ 1/5/1445هـ)، تحت إشراف وزارة الموارد البشرية والتنمية الاجتماعية. تُعنى برعاية الأطفال المحتضنين مجهولي النسب وأسرهم الحاضنة بمنطقة مكة المكرمة، من لحظة الاحتضان وحتى بلوغ الطفل واستقلاله.</p>
+    
+    <div class="kpi-grid kpi-grid-4">
+      <div class="kpi-box"><div class="kpi-val">+75</div><div class="kpi-lbl">أسرة مستفيدة</div><div class="kpi-sub">في منطقة مكة المكرمة</div></div>
+      <div class="kpi-box"><div class="kpi-val">+75</div><div class="kpi-lbl">طفل محتضن</div><div class="kpi-sub">الفئة المستهدفة المباشرة</div></div>
+      <div class="kpi-box"><div class="kpi-val">5</div><div class="kpi-lbl">برامج تشغيلية</div><div class="kpi-sub">رعاية | تأهيل | توعية</div></div>
+      <div class="kpi-box"><div class="kpi-val">14</div><div class="kpi-lbl">محافظة وأمانة</div><div class="kpi-sub">النطاق الجغرافي</div></div>
+    </div>
 
-  <div class="criteria-grid" id="criteriaGrid"></div>
-
-  <div class="total-bar">
-    <span class="total-label">مجموع الأوزان الكلي</span>
-    <span class="total-num" id="totalWeight">100%</span>
-    <span class="total-status status-ok" id="totalStatus">✓ مكتمل</span>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Section 2: Matrix -->
-  <div class="section-header">
-    <div class="step-badge">٢</div>
-    <h2>قيّم كل هدف على كل معيار</h2>
-  </div>
-  <p class="section-note">اختر من 1 (ضعيف) إلى 5 (ممتاز) لكل خلية. التقييمات الافتراضية مبنية على التحليل الفني للوثيقة.</p>
-
-  <div class="matrix-container">
-    <div class="matrix-scroll">
-      <table id="matrixTable"></table>
+    <div class="two-col">
+      <div class="col-box">
+        <h3>الوضع الحالي والفرصة</h3>
+        <p>تعمل سندكم في قطاع يعاني شُحّاً واضحاً في الخدمات المتخصصة. الجمعية هي المؤسسة الوحيدة المتخصصة في هذه الفئة بمنطقة مكة المكرمة، مما يمنحها ميزة تنافسية استراتيجية فريدة.</p>
+        <p>إجمالي الإيرادات المسجَّلة: <strong>112,450 ريال (2024)</strong>. الجمعية في مرحلة البناء المؤسسي وتستهدف رفع قدرتها التمويلية وتأسيس وحدتها الاستثمارية 2025–2027.</p>
+      </div>
+      <div class="col-box accent">
+        <h3>الاحتياج التمويلي والأهداف</h3>
+        <p><strong>الاحتياج التمويلي التشغيلي السنوي:</strong> 800,000 – 1,200,000 ريال لتغطية البرامج الخمسة.</p>
+        <p><strong>هدف 2027:</strong> رفع التمويل الذاتي إلى 40% من الإيرادات، واستقطاب شراكات بقيمة تتجاوز 2 مليون ريال سنوياً.</p>
+        <p>فرص الشراكة: CSR، الصناديق الوقفية، المستثمرون الاجتماعيون، المنح الحكومية.</p>
+      </div>
     </div>
   </div>
+</div>
 
-  <!-- Section 3: Results -->
+<!-- ════════════════════════════════════════ SEC 2: IMPACT STORY ══ -->
+<div class="page">
   <div class="section-header">
-    <div class="step-badge">٣</div>
-    <h2>النتائج والترتيب التلقائي</h2>
+    <div class="section-num">02</div>
+    <div><div class="section-title-ar">قصة الأثر</div><div class="section-title-en">Impact Story</div></div>
   </div>
-  <p class="section-note">يتحدث الترتيب تلقائياً مع كل تغيير في الأوزان أو التقييمات.</p>
-
-  <div class="results-grid" id="resultsGrid"></div>
-  <div class="rec-box" id="recBox"></div>
-
-  <button class="reset-btn" onclick="resetAll()">↺ &nbsp; إعادة ضبط القيم الافتراضية</button>
-
-</div>
-
-<div class="page-footer">
-  مصفوفة المفاضلة الاستراتيجية — جمعية سندكم &nbsp;|&nbsp; وقف خبرات الاستدامة &nbsp;|&nbsp; 2025م
-</div>
-
-<script>
-const CRITERIA = [
-  { id:'c1', icon:'🎯', label:'الأثر على المستفيد', desc:'مدى تحسين حياة الأيتام مباشرةً وعلى المدى البعيد', weight:25 },
-  { id:'c2', icon:'⚙️', label:'الجاهزية التنفيذية', desc:'توفر الكوادر والموارد والأنظمة اللازمة للتنفيذ', weight:20 },
-  { id:'c3', icon:'💰', label:'الاستدامة المالية', desc:'القدرة على التمويل والاستمرار دون انقطاع', weight:20 },
-  { id:'c4', icon:'🏛️', label:'التوافق مع رؤية 2030', desc:'الانسجام مع المتطلبات التنظيمية والوطنية', weight:15 },
-  { id:'c5', icon:'🏗️', label:'الأثر المؤسسي', desc:'تعزيز قدرات الجمعية وبنيتها الداخلية', weight:10 },
-  { id:'c6', icon:'📊', label:'قابلية القياس', desc:'وجود مؤشرات واضحة وقابلة للتتبع والإثبات', weight:10 },
-];
-
-const GOALS = [
-  { id:'g1', label:'الحوكمة التشغيلية المنضبطة', short:'الحوكمة' },
-  { id:'g2', label:'الجودة المحمية والاستجابة المعيارية', short:'الجودة' },
-  { id:'g3', label:'الرقمنة والأثر المعتمد', short:'الرقمنة' },
-  { id:'g4', label:'الاستدامة المالية المرتبطة بالقيمة', short:'الاستدامة المالية' },
-  { id:'g5', label:'التمكين والمساندة المستدامة', short:'التمكين' },
-];
-
-const DEFAULT_RATINGS = {
-  g1: { c1:3, c2:5, c3:3, c4:4, c5:5, c6:5 },
-  g2: { c1:5, c2:4, c3:3, c4:4, c5:3, c6:4 },
-  g3: { c1:3, c2:3, c3:4, c4:5, c5:4, c6:5 },
-  g4: { c1:3, c2:3, c3:5, c4:4, c5:3, c6:4 },
-  g5: { c1:5, c2:4, c3:3, c4:3, c5:4, c6:3 },
-};
-
-let weights = {};
-let ratings = {};
-
-function init() {
-  CRITERIA.forEach(c => weights[c.id] = c.weight);
-  ratings = JSON.parse(JSON.stringify(DEFAULT_RATINGS));
-}
-
-function resetAll() {
-  init();
-  buildAll();
-}
-
-function buildAll() {
-  buildCriteria();
-  buildMatrix();
-  computeResults();
-}
-
-function buildCriteria() {
-  const grid = document.getElementById('criteriaGrid');
-  grid.innerHTML = '';
-  CRITERIA.forEach(c => {
-    const card = document.createElement('div');
-    card.className = 'criterion-card';
-    card.innerHTML = `
-      <span class="criterion-icon">${c.icon}</span>
-      <div class="criterion-name">${c.label}</div>
-      <div class="criterion-desc">${c.desc}</div>
-      <div class="weight-control">
-        <input type="range" min="0" max="50" step="5" value="${weights[c.id]}"
-          data-cid="${c.id}" class="weight-slider">
-        <span class="weight-display" id="wd_${c.id}">${weights[c.id]}%</span>
-      </div>`;
-    grid.appendChild(card);
-  });
-  document.querySelectorAll('.weight-slider').forEach(sl => {
-    sl.addEventListener('input', e => {
-      const cid = e.target.dataset.cid;
-      weights[cid] = parseInt(e.target.value);
-      document.getElementById('wd_' + cid).textContent = weights[cid] + '%';
-      updateTotalBar();
-      buildMatrix();
-      computeResults();
-    });
-  });
-  updateTotalBar();
-}
-
-function updateTotalBar() {
-  const total = Object.values(weights).reduce((a, b) => a + b, 0);
-  const el = document.getElementById('totalWeight');
-  const st = document.getElementById('totalStatus');
-  el.textContent = total + '%';
-  if (total === 100) {
-    st.className = 'total-status status-ok';
-    st.textContent = '✓ مكتمل';
-  } else if (total < 100) {
-    st.className = 'total-status status-warn';
-    st.textContent = '↑ ناقص ' + (100 - total) + '%';
-  } else {
-    st.className = 'total-status status-warn';
-    st.textContent = '↓ زائد ' + (total - 100) + '%';
-  }
-}
-
-function buildMatrix() {
-  const tbl = document.getElementById('matrixTable');
-  let html = '<thead><tr><th>الهدف الاستراتيجي</th>';
-  CRITERIA.forEach(c => {
-    html += `<th>${c.icon} ${c.label}<br><span class="weight-tag">${weights[c.id]}%</span></th>`;
-  });
-  html += '<th>المجموع المرجح</th><th>الترتيب</th></tr></thead><tbody>';
-  GOALS.forEach((g, gi) => {
-    html += `<tr>
-      <td>
-        <span class="goal-index">الهدف ${gi + 1}</span>
-        <span class="goal-label">${g.label}</span>
-      </td>`;
-    CRITERIA.forEach(c => {
-      const r = ratings[g.id][c.id];
-      html += `<td><div class="rating-group">`;
-      for (let v = 1; v <= 5; v++) {
-        const isActive = r === v ? 'active' : '';
-        html += `<button class="rating-btn r${v} ${isActive}"
-          data-gid="${g.id}" data-cid="${c.id}" data-val="${v}">${v}</button>`;
-      }
-      html += `</div></td>`;
-    });
-    html += `<td class="score-cell" id="sc_${g.id}">—</td>
-             <td id="rk_${g.id}">—</td></tr>`;
-  });
-  html += '</tbody>';
-  tbl.innerHTML = html;
-
-  tbl.querySelectorAll('.rating-btn').forEach(btn => {
-    btn.addEventListener('click', e => {
-      const { gid, cid, val } = e.target.dataset;
-      ratings[gid][cid] = parseInt(val);
-      buildMatrix();
-      computeResults();
-    });
-  });
-}
-
-function computeResults() {
-  const totalW = Object.values(weights).reduce((a, b) => a + b, 0);
-
-  const scores = GOALS.map(g => {
-    let raw = 0;
-    CRITERIA.forEach(c => { raw += ratings[g.id][c.id] * weights[c.id]; });
-    const score = totalW > 0 ? raw / totalW : 0;
-    return { id: g.id, label: g.label, score };
-  });
-
-  const sorted = [...scores].sort((a, b) => b.score - a.score);
-
-  scores.forEach(s => {
-    const rank = sorted.findIndex(x => x.id === s.id) + 1;
-    const scEl = document.getElementById('sc_' + s.id);
-    const rkEl = document.getElementById('rk_' + s.id);
-    if (scEl) {
-      scEl.textContent = s.score.toFixed(2);
-      scEl.className = 'score-cell ' +
-        (s.score >= 3.5 ? 'score-high' : s.score >= 2.5 ? 'score-mid' : 'score-low');
-    }
-    if (rkEl) {
-      const rc = ['rank-1','rank-2','rank-3','rank-4','rank-5'][rank - 1] || 'rank-5';
-      rkEl.innerHTML = `<span class="rank-badge ${rc}">${rank}</span>`;
-    }
-  });
-
-  const grid = document.getElementById('resultsGrid');
-  grid.innerHTML = '';
-  const rankLabels = [
-    'الأولى — أولوية قصوى',
-    'الثانية — أولوية عالية',
-    'الثالثة — أولوية متوسطة',
-    'الرابعة — أولوية منخفضة',
-    'الخامسة — يمكن تأجيله',
-  ];
-  const rankClasses = ['winner rank1','rank2','rank3','rank4','rank5'];
-
-  sorted.forEach((s, i) => {
-    const pct = Math.round((s.score / 5) * 100);
-    const card = document.createElement('div');
-    card.className = 'result-card ' + rankClasses[i];
-    card.innerHTML = `
-      ${i === 0 ? '<span class="result-card winner-badge">✦ الأعلى أولوية</span>' : ''}
-      <span class="result-rank-label">${rankLabels[i]}</span>
-      <div class="result-name">${s.label}</div>
-      <div class="score-bar-wrap">
-        <div class="score-bar-fill" style="width:${pct}%"></div>
+  <div class="content">
+    <h2>المشكلة الاجتماعية: طفل في انتظار السند</h2>
+    <p>يُولد كل عام في المملكة العربية السعودية آلاف الأطفال مجهولي النسب، يواجهون منذ اللحظة الأولى تحديات قانونية واجتماعية ونفسية بالغة التعقيد. الأسرة الحاضنة تجد نفسها غالباً أمام فراغ مؤسسي حاد: لا توجيه نفسي متخصص، لا دعم اجتماعي مستمر، ولا مرجع مؤسسي يرافقها من أول يوم حتى يستقل الطفل بحياته.</p>
+    
+    <h2>التحول الذي تصنعه سندكم</h2>
+    <div class="before-after">
+      <div class="before">
+        <div class="ba-title">❌ قبل سندكم</div>
+        <ul>
+          <li>أسرة حاضنة تواجه تحديات نفسية وقانونية وحيدة</li>
+          <li>غياب التوجيه المتخصص للطفل المحتضن</li>
+          <li>انعدام شبكة دعم مؤسسية فاعلة</li>
+          <li>تعثُّر في الاندماج الاجتماعي والتعليمي</li>
+          <li>انقطاع الدعم عند بلوغ الطفل</li>
+        </ul>
       </div>
-      <div class="result-score">${s.score.toFixed(2)} / 5.00</div>`;
-    grid.appendChild(card);
-  });
+      <div class="after">
+        <div class="ba-title">✅ مع سندكم</div>
+        <ul>
+          <li>رفقة مؤسسية من أول يوم حتى الاستقلال</li>
+          <li>برامج إرشاد نفسي متخصصة للطفل والأسرة</li>
+          <li>شبكة دعم مجتمعي وتطوعي فاعلة</li>
+          <li>تأهيل للطفل ليكون عضواً منتجاً</li>
+          <li>مسارات عمل وتوظيف لضمان المستقبل</li>
+        </ul>
+      </div>
+    </div>
 
-  const w = sorted[0];
-  const r = sorted[1];
-  const t = sorted[2];
-  document.getElementById('recBox').innerHTML = `
-    <span class="rec-title">✦ التوصية الاستراتيجية</span>
-    بناءً على التقييم الحالي، الهدف الأعلى أولوية هو
-    <strong>${w.label}</strong> بنقاط ${w.score.toFixed(2)}،
-    يليه <strong>${r.label}</strong> بنقاط ${r.score.toFixed(2)}،
-    ثم <strong>${t.label}</strong> بنقاط ${t.score.toFixed(2)}.
-    يُنصح بالبدء بتنفيذ الهدف الأول كمرحلة تأسيسية خلال السنة الأولى،
-    ثم دمجه مع الثاني في المرحلة التالية. يمكن تعديل الأوزان والتقييمات
-    أعلاه للحصول على توصية تعكس واقع جمعيتك بدقة أكبر.`;
-}
+    <h2>الأثر الإنساني المتوقع</h2>
+    <p>كل طفل تدعمه سندكم هو استثمار في مواطن مُنتج سيُسهم لعقود قادمة في بناء المجتمع السعودي. الحسابات الاقتصادية للعائد الاجتماعي تُظهر أن كل ريال يُنفق على رعاية الطفولة المبكرة يولّد ما بين 7 و13 ريالاً من القيمة الاجتماعية عبر تقليل تكاليف الإجرام والبطالة ورفع الإنتاجية الاقتصادية.</p>
+  </div>
+</div>
 
-init();
-buildAll();
-</script>
+<!-- ════════════════════════════════════════ SEC 3: SOCIAL ANALYSIS ══ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div><div class="section-title-ar">تحليل المشكلة الاجتماعية وحجم الاحتياج</div><div class="section-title-en">Social Problem Analysis</div></div>
+  </div>
+  <div class="content">
+    <div class="two-col">
+      <div class="col-box">
+        <h3>حجم الفئة المستهدفة</h3>
+        <p>في منطقة مكة المكرمة — المنطقة الأعلى كثافة سكانياً — تُقدَّر الأسر الحاضنة بالمئات، في حين لا تتجاوز الجهات المتخصصة عدداً محدوداً جداً.</p>
+        <p><strong>الفجوة واضحة: الطلب يفوق العرض المؤسسي بفارق كبير</strong>، مما يجعل توسع سندكم ضرورة استراتيجية لا خياراً.</p>
+      </div>
+      <div class="col-box navy">
+        <h3>التحديات الرئيسية</h3>
+        <ul>
+          <li>غياب السجل الإحصائي الوطني الشامل</li>
+          <li>ضعف البنية التحتية للدعم النفسي المتخصص</li>
+          <li>محدودية الوعي المجتمعي بقضايا الاحتضان</li>
+          <li>تعقيد الإجراءات القانونية والبيروقراطية</li>
+          <li>غياب مسارات التأهيل المهني للشباب المحتضَن</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>الفرص الاستراتيجية في البيئة الخارجية</h2>
+    <table>
+      <thead><tr><th>الفرصة</th><th>المحفّز</th><th>الإمكانية لسندكم</th></tr></thead>
+      <tbody>
+        <tr><td>رؤية 2030</td><td>تعزيز دور القطاع غير الربحي في التنمية</td><td>موازاة برامج الوزارة وصندوق الوقف</td></tr>
+        <tr><td>نمو قطاع المسؤولية الاجتماعية</td><td>تزايد ميزانيات CSR للشركات</td><td>استقطاب رعايات مؤسسية كبرى</td></tr>
+        <tr><td>التحول الرقمي</td><td>انتشار منصات التبرع الإلكترونية</td><td>بناء قناة تمويل رقمية مستدامة</td></tr>
+        <tr><td>الأوقاف الاستثمارية</td><td>نمو صناديق الوقف في السعودية</td><td>الحصول على دعم وقفي دائم</td></tr>
+        <tr><td>قانون الكيانات غير الربحية</td><td>بيئة تشريعية داعمة ومنظِّمة</td><td>رفع الجاهزية والامتثال المؤسسي</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ SEC 4: BUSINESS MODEL ══ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div><div class="section-title-ar">نموذج العمل والاستدامة المالية</div><div class="section-title-en">Business Model & Financial Sustainability</div></div>
+  </div>
+  <div class="content">
+    <h2>نموذج الإيرادات الحالي والمستهدف</h2>
+    <table>
+      <thead><tr><th>مصدر الإيراد</th><th>الوضع الحالي</th><th>المستهدف 2026</th><th>المستهدف 2027</th></tr></thead>
+      <tbody>
+        <tr><td>المنح والتبرعات الفردية</td><td>المصدر الأساسي</td><td>40%</td><td>30%</td></tr>
+        <tr><td>برامج المسؤولية الاجتماعية (CSR)</td><td>غير مُفعَّل</td><td>25%</td><td>25%</td></tr>
+        <tr><td>الدعم الحكومي والمنح الوزارية</td><td>محدود</td><td>15%</td><td>15%</td></tr>
+        <tr><td>الصناديق الوقفية والأوقاف</td><td>غير مُفعَّل</td><td>10%</td><td>15%</td></tr>
+        <tr><td>الاستثمار الاجتماعي (مشاريع)</td><td>غير مُفعَّل</td><td>5%</td><td>10%</td></tr>
+        <tr><td>مبادرات التمويل الجماعي</td><td>غير مُفعَّل</td><td>5%</td><td>5%</td></tr>
+      </tbody>
+    </table>
+
+    <h2>محاور الاستدامة المالية الثلاثة</h2>
+    <div class="partner-grid">
+      <div class="partner-card"><h4>المحور الأول<br>التمويل القصير الأمد</h4><p>استقطاب منح وتبرعات فورية لتغطية التكاليف التشغيلية وبناء احتياطي مالي.</p></div>
+      <div class="partner-card"><h4>المحور الثاني<br>الشراكات المؤسسية</h4><p>إبرام اتفاقيات متعددة السنوات مع شركات وصناديق لضمان تدفق تمويل مستقر.</p></div>
+      <div class="partner-card gold"><h4>المحور الثالث<br>الأصول الذاتية</h4><p>تأسيس وحدة استثمارية وبناء أصول (وقف + مشاريع) تولّد دخلاً ذاتياً مستداماً.</p></div>
+    </div>
+
+    <h2>الهيكل التمويلي المُقترح (ريال سعودي / سنوياً)</h2>
+    <table>
+      <thead><tr><th>البند</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+      <tbody>
+        <tr><td><strong>الإيرادات المُستهدفة</strong></td><td>600,000</td><td>1,000,000</td><td>1,500,000</td></tr>
+        <tr><td>التكاليف التشغيلية</td><td>500,000</td><td>750,000</td><td>1,000,000</td></tr>
+        <tr><td>الاستثمار في البرامج</td><td>80,000</td><td>180,000</td><td>350,000</td></tr>
+        <tr><td>احتياطي الاستدامة</td><td>20,000</td><td>70,000</td><td>150,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ SEC 5: IMPACT MEASUREMENT ══ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div><div class="section-title-ar">قياس الأثر الاجتماعي</div><div class="section-title-en">Impact Measurement & KPIs</div></div>
+  </div>
+  <div class="content">
+    <h2>مؤشرات الأداء الرئيسية (KPIs)</h2>
+    <table>
+      <thead><tr><th>المؤشر</th><th>الوحدة</th><th>القيمة الحالية</th><th>المستهدف 2026</th><th>المستهدف 2027</th></tr></thead>
+      <tbody>
+        <tr><td>عدد الأسر المستفيدة</td><td>أسرة</td><td>+75</td><td>150</td><td>250</td></tr>
+        <tr><td>عدد الأطفال المحتضنين المُخدومين</td><td>طفل</td><td>+75</td><td>150</td><td>250</td></tr>
+        <tr><td>عدد الجلسات الإرشادية</td><td>جلسة/سنة</td><td>قيد الحصر</td><td>500</td><td>1,000</td></tr>
+        <tr><td>معدل رضا الأسر الحاضنة</td><td>%</td><td>قيد القياس</td><td>85%</td><td>90%</td></tr>
+        <tr><td>عدد البرامج التدريبية المُنجزة</td><td>برنامج/سنة</td><td>5</td><td>12</td><td>20</td></tr>
+        <tr><td>نسبة الأطفال المُدمجين مدرسياً</td><td>%</td><td>قيد القياس</td><td>95%</td><td>98%</td></tr>
+        <tr><td>عدد الشراكات المؤسسية الفاعلة</td><td>شراكة</td><td>8</td><td>20</td><td>35</td></tr>
+        <tr><td>نسبة التمويل الذاتي</td><td>%</td><td>0%</td><td>15%</td><td>40%</td></tr>
+      </tbody>
+    </table>
+
+    <h2>قياس العائد الاجتماعي — SROI</h2>
+    <div class="sroi-grid">
+      <div class="sroi-box"><div class="sroi-val">13x</div><div class="sroi-lbl">معامل العائد الاجتماعي المُقدَّر</div><div class="sroi-sub">مقابل كل ريال مستثمر</div></div>
+      <div class="sroi-box"><div class="sroi-val">60%</div><div class="sroi-lbl">تقليل احتمالية التعثر الاجتماعي</div><div class="sroi-sub">مقارنة بحالات بدون رعاية</div></div>
+      <div class="sroi-box"><div class="sroi-val">3x</div><div class="sroi-lbl">رفع إمكانية التوظيف المستقبلي</div><div class="sroi-sub">للأطفال المُؤهَّلين عبر البرامج</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ SEC 6: INVESTMENT OPP ══ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div><div class="section-title-ar">الفرص الاستثمارية</div><div class="section-title-en">Investment Opportunities</div></div>
+  </div>
+  <div class="content">
+    <p>تُقدّم سندكم للمستثمرين الاجتماعيين والمانحين فرصاً متعددة للمشاركة، من التمويل البرامجي المباشر إلى الاستثمار في بناء الأصول المؤسسية.</p>
+
+    <div class="opp-box">
+      <div class="opp-header gold">الفرصة الأولى: مركز سندكم للإرشاد الأسري المتخصص</div>
+      <div class="opp-body">
+        <table>
+          <tbody>
+            <tr><td><strong>فكرة المشروع</strong></td><td>تأسيس مركز متخصص لتقديم الإرشاد النفسي والاجتماعي للأسر الحاضنة</td></tr>
+            <tr><td><strong>حجم الاستثمار</strong></td><td>500,000 – 750,000 ريال سعودي</td></tr>
+            <tr><td><strong>نموذج العائد</strong></td><td>خدمة 200+ أسرة سنوياً | رسوم رمزية + منح تشغيلية</td></tr>
+            <tr><td><strong>الأثر الاجتماعي</strong></td><td>تقليل حالات إعادة الأطفال | رفع جودة حياة الأسر</td></tr>
+            <tr><td><strong>مدة الاسترداد</strong></td><td>18–24 شهراً للتعادل التشغيلي</td></tr>
+            <tr><td><strong>نموذج الشراكة</strong></td><td>راعٍ استراتيجي (تسمية المركز) | ممول مشروع | مانح برامجي</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="opp-box">
+      <div class="opp-header teal">الفرصة الثانية: منصة سندكم الرقمية لإدارة حالات الاحتضان</div>
+      <div class="opp-body">
+        <table>
+          <tbody>
+            <tr><td><strong>فكرة المشروع</strong></td><td>تطوير منصة رقمية لإدارة الحالات ومتابعة الأطفال وربط الأسر بالمختصين</td></tr>
+            <tr><td><strong>حجم الاستثمار</strong></td><td>200,000 – 350,000 ريال سعودي</td></tr>
+            <tr><td><strong>نموذج العائد</strong></td><td>قاعدة بيانات وطنية | ترخيص النظام لجمعيات أخرى | دخل خدمات</td></tr>
+            <tr><td><strong>الأثر الاجتماعي</strong></td><td>متابعة 500+ حالة | تقارير أثر قابلة للقياس</td></tr>
+            <tr><td><strong>نموذج الشراكة</strong></td><td>استثمار تقني مشترك أو تمويل مؤسسي كامل مع حقوق تسمية</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="opp-box">
+      <div class="opp-header navy">الفرصة الثالثة: وقف سندكم الاستثماري</div>
+      <div class="opp-body">
+        <table>
+          <tbody>
+            <tr><td><strong>فكرة المشروع</strong></td><td>صندوق وقفي يُغطي 30% من التكاليف التشغيلية للجمعية بصورة دائمة</td></tr>
+            <tr><td><strong>حجم الاستثمار الوقفي</strong></td><td>3,000,000 – 5,000,000 ريال (على مراحل)</td></tr>
+            <tr><td><strong>العائد الوقفي</strong></td><td>200,000 – 400,000 ريال سنوياً (عائد 6–8%)</td></tr>
+            <tr><td><strong>الأثر الاجتماعي</strong></td><td>استدامة مالية دائمة | استقلالية عن التبرعات المتقطعة</td></tr>
+            <tr><td><strong>نموذج الشراكة</strong></td><td>واقف مؤسسي أو فردي | حصص ابتداء من 50,000 ريال</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ SEC 7: GOVERNANCE ══ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div><div class="section-title-ar">الحوكمة والشفافية</div><div class="section-title-en">Governance & Transparency</div></div>
+  </div>
+  <div class="content">
+    <h2>الهيكل التنظيمي</h2>
+    <table>
+      <thead><tr><th>المستوى</th><th>الجهة</th><th>الدور</th><th>العضوية</th></tr></thead>
+      <tbody>
+        <tr><td>الحوكمة العليا</td><td><strong>مجلس الإدارة</strong></td><td>الإشراف الاستراتيجي والقرارات الكبرى</td><td>5 أعضاء (رئيس + نائب + 3 أعضاء)</td></tr>
+        <tr><td>الرقابة المالية</td><td><strong>لجنة المراجعة والتدقيق</strong></td><td>مراجعة القوائم المالية والامتثال</td><td>تابعة لمجلس الإدارة</td></tr>
+        <tr><td>الاستثمار</td><td><strong>لجنة الاستثمار</strong></td><td>دراسة الفرص وإدارة الأصول</td><td>تابعة لمجلس الإدارة</td></tr>
+        <tr><td>التنفيذ</td><td><strong>المدير التنفيذي</strong></td><td>الإدارة اليومية وتنفيذ الاستراتيجية</td><td>معيَّن من مجلس الإدارة</td></tr>
+        <tr><td>البرامج</td><td><strong>قسم خدمات المستفيدين</strong></td><td>تقديم البرامج الخمسة للفئة المستهدفة</td><td>فريق متخصص</td></tr>
+        <tr><td>الاستدامة</td><td><strong>قسم الاستدامة وتنمية الموارد</strong></td><td>استقطاب التمويل وبناء الشراكات</td><td>متخصصون ماليون</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col">
+      <div class="col-box">
+        <h3>الامتثال التنظيمي</h3>
+        <ul>
+          <li>مرخَّصة من المركز الوطني لتنمية القطاع غير الربحي</li>
+          <li>تحت إشراف وزارة الموارد البشرية والتنمية الاجتماعية</li>
+          <li>ملتزمة بنظام الجمعيات والمؤسسات الأهلية</li>
+          <li>تقارير سنوية مرفوعة للجهات الرقابية</li>
+          <li>تدقيق مالي خارجي مستقل</li>
+        </ul>
+      </div>
+      <div class="col-box accent">
+        <h3>آليات الشفافية</h3>
+        <ul>
+          <li>نشر التقرير السنوي للعموم (تقرير 2024 متاح)</li>
+          <li>لوحة متابعة آنية للعمليات (قيد التطوير)</li>
+          <li>مصفوفة صلاحيات واضحة لكل مستوى</li>
+          <li>سياسة إفصاح للمانحين والشركاء</li>
+          <li>تقارير أثر ربع سنوية لأصحاب المصلحة</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ SEC 8: PARTNERSHIPS ══ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div><div class="section-title-ar">خارطة الشراكات والتمويل</div><div class="section-title-en">Partnerships & Funding Map</div></div>
+  </div>
+  <div class="content">
+    <h2>الشراكات القائمة <span class="badge">8 شركاء فاعلون</span></h2>
+    <table>
+      <thead><tr><th>الشريك</th><th>نوع الشراكة</th><th>القيمة المُضافة</th></tr></thead>
+      <tbody>
+        <tr><td>أمانة محافظة جدة</td><td>حكومية</td><td>دعم تنظيمي وتسهيل الإجراءات</td></tr>
+        <tr><td>جمعية الوداد لتعليم القيم</td><td>برامجية</td><td>البُعد التربوي والقيمي للأطفال</td></tr>
+        <tr><td>جمعية عطاء الخير للأيتام</td><td>قطاعية</td><td>تبادل الخبرات والتكامل في الخدمات</td></tr>
+        <tr><td>جمعية العلاج الآمن</td><td>صحية</td><td>الرعاية الصحية والنفسية للأطفال</td></tr>
+        <tr><td>الفضاء الرقمي العالمي</td><td>تقنية واستثمارية</td><td>التحول الرقمي ومنصات التمويل</td></tr>
+        <tr><td>الجمعية التعاونية متعددة الأغراض</td><td>خدمية</td><td>الخدمات اللوجستية والتشغيلية</td></tr>
+        <tr><td>دارناسة للدعاية والإعلام</td><td>تواصلية</td><td>الهوية المؤسسية والتسويق الاجتماعي</td></tr>
+        <tr><td>جمعية فلذات لرعاية الصحة</td><td>صحية</td><td>الرعاية الصحية المتخصصة للأطفال</td></tr>
+      </tbody>
+    </table>
+
+    <h2>استراتيجية الشراكات المُستهدفة</h2>
+    <table>
+      <thead><tr><th>فئة الشريك</th><th>نموذج التعاون</th><th>المُستهدف 2026</th></tr></thead>
+      <tbody>
+        <tr><td><strong>الجهات الحكومية</strong></td><td>مذكرات تفاهم + تفويض برامجي</td><td>وزارة الموارد + NCNP + التعليم</td></tr>
+        <tr><td><strong>الشركات (CSR)</strong></td><td>عقود رعاية سنوية / متعددة السنوات</td><td>10+ شركة بقيمة 500,000+ ريال</td></tr>
+        <tr><td><strong>الصناديق الوقفية</strong></td><td>إدراج في محافظ الأوقاف</td><td>3+ صناديق وقفية</td></tr>
+        <tr><td><strong>المستثمرون الاجتماعيون</strong></td><td>حصص شراكة في المشاريع</td><td>2+ مستثمر بنموذج هجين</td></tr>
+        <tr><td><strong>المانحون الدوليون</strong></td><td>تقديم طلبات المنح الدولية</td><td>UNICEF + مؤسسات خليجية</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ SEC 9: ROADMAP ══ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div><div class="section-title-ar">خارطة الطريق: التحول نحو الاستدامة</div><div class="section-title-en">3-Year Transformation Roadmap 2025–2027</div></div>
+  </div>
+  <div class="content">
+
+    <div class="roadmap-item">
+      <div class="rm-phase p1">
+        <div class="rm-phase-num">01</div>
+        <div class="rm-yr">2025</div>
+      </div>
+      <div class="rm-content">
+        <h3>بناء الأرضية الصلبة — Foundation Building</h3>
+        <ul>
+          <li>تأسيس الوحدة الاستثمارية ووضع هيكلها التنظيمي</li>
+          <li>المسح المالي الشامل وحصر الأصول الحالية</li>
+          <li>إطلاق استراتيجية علاقات المانحين والممولين</li>
+          <li>الحصول على أول منح مؤسسية (حكومية وخاصة)</li>
+          <li>بناء قاعدة البيانات وأنظمة القياس والمتابعة</li>
+        </ul>
+        <div class="rm-kpi">🎯 مؤشر النجاح: إيرادات 600,000+ ريال | 10 شراكات مُفعَّلة</div>
+      </div>
+    </div>
+
+    <div class="roadmap-item">
+      <div class="rm-phase p2">
+        <div class="rm-phase-num">02</div>
+        <div class="rm-yr">2026</div>
+      </div>
+      <div class="rm-content">
+        <h3>النمو المؤسسي والتوسع — Institutional Growth</h3>
+        <ul>
+          <li>إطلاق مركز الإرشاد الأسري المتخصص</li>
+          <li>إطلاق المنصة الرقمية لإدارة الحالات</li>
+          <li>توسيع النطاق الجغرافي لـ 14 محافظة بالكامل</li>
+          <li>استقطاب أول استثمار اجتماعي هجين</li>
+          <li>إطلاق برنامج الوقف التأسيسي (المرحلة الأولى)</li>
+        </ul>
+        <div class="rm-kpi">🎯 مؤشر النجاح: إيرادات 1,000,000+ ريال | 20 شراكة | تمويل ذاتي 15%</div>
+      </div>
+    </div>
+
+    <div class="roadmap-item">
+      <div class="rm-phase p3">
+        <div class="rm-phase-num">03</div>
+        <div class="rm-yr">2027</div>
+      </div>
+      <div class="rm-content">
+        <h3>الريادة والأثر الممتد — Leadership & Scale</h3>
+        <ul>
+          <li>تحقيق التعادل المالي والاستدامة التشغيلية الكاملة</li>
+          <li>الوقف الاستثماري يُغطي 30% من التكاليف السنوية</li>
+          <li>تصدير نموذج سندكم لمناطق أخرى بالمملكة</li>
+          <li>إطلاق برنامج وطني للتأهيل المهني للشباب المحتضَن</li>
+          <li>الحصول على اعتماد دولي لمعايير الجودة والأثر</li>
+        </ul>
+        <div class="rm-kpi">🎯 مؤشر النجاح: إيرادات 1,500,000+ ريال | تمويل ذاتي 40% | نموذج قابل للنسخ وطنياً</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ SEC 10: VISION 2030 ══ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div><div class="section-title-ar">التوافق مع رؤية المملكة 2030</div><div class="section-title-en">Vision 2030 Alignment</div></div>
+  </div>
+  <div class="content">
+    <p>تُجسّد جمعية سندكم توافقاً عميقاً مع مستهدفات رؤية المملكة 2030 في ركائزها الثلاث: المجتمع الحيوي، الاقتصاد المزدهر، والوطن الطموح. هذا التوافق يمنحها مكانة استثمارية مُميَّزة لدى الجهات الحكومية وصناديق الدعم الوطنية.</p>
+    <table>
+      <thead><tr><th>مستهدف رؤية 2030</th><th>إسهام سندكم</th><th>مؤشر القياس</th></tr></thead>
+      <tbody>
+        <tr><td>رفع مساهمة القطاع غير الربحي في GDP إلى 5%</td><td>نموذج مؤسسي ناضج يرفع كفاءة القطاع</td><td>حجم الإيرادات المُدارة وكفاءة الإنفاق</td></tr>
+        <tr><td>رفع مؤشر جودة الحياة</td><td>تحسين حياة الأطفال المحتضنين وأسرهم</td><td>معدل رضا المستفيدين ومخرجات البرامج</td></tr>
+        <tr><td>تمكين الشباب وتأهيلهم لسوق العمل</td><td>برامج تأهيل مهني للشباب المحتضن</td><td>نسبة توظيف خريجي البرامج</td></tr>
+        <tr><td>تعزيز الهوية الوطنية والانتماء</td><td>بناء مواطنين منتجين من فئة هشّة</td><td>معدل الاندماج الاجتماعي والتعليمي</td></tr>
+        <tr><td>تطوير القطاع غير الربحي ورفع جاهزيته</td><td>نموذج حوكمة وقياس أثر قابل للنسخ وطنياً</td><td>جاهزية الامتثال والتقارير المؤسسية</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ SEC 11: CTA ══ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div><div class="section-title-ar">دعوة للشراكة والاستثمار</div><div class="section-title-en">Call to Action</div></div>
+  </div>
+  <div class="content">
+    <div class="cta-box">
+      <div class="cta-title">معاً نصنع الأثر</div>
+      <div class="cta-sub">جمعية سندكم ليست مجرد مؤسسة خيرية — بل هي استثمار استراتيجي في الإنسان السعودي.<br>كل ريال تستثمره اليوم في طفل محتضن هو استثمار في مواطن منتج وعائلة مستقرة ومجتمع متماسك.</div>
+    </div>
+
+    <h2>خيارات الشراكة والمساهمة</h2>
+    <table>
+      <thead><tr><th>نوع المساهمة</th><th>الحجم المُقترح</th><th>المخرجات</th><th>النموذج</th></tr></thead>
+      <tbody>
+        <tr><td><strong>راعٍ استراتيجي للجمعية</strong></td><td>500,000+ ريال/سنة</td><td>تسمية المقر + حضور فعاليات + تقارير حصرية</td><td>CSR / استثمار اجتماعي</td></tr>
+        <tr><td><strong>ممول برنامج متكامل</strong></td><td>150,000–300,000 ريال</td><td>ملكية برنامج + قياس أثر مخصص</td><td>منحة / CSR</td></tr>
+        <tr><td><strong>مانح مشاريع التطوير</strong></td><td>200,000–500,000 ريال</td><td>تمويل مشروع الإرشاد أو المنصة الرقمية</td><td>استثمار اجتماعي هجين</td></tr>
+        <tr><td><strong>واقف في صندوق سندكم</strong></td><td>50,000+ ريال (دائم)</td><td>عائد وقفي أبدي | لوح تكريم الواقفين</td><td>وقف خيري</td></tr>
+        <tr><td><strong>شريك برامجي مؤسسي</strong></td><td>خدمات / موارد بشرية</td><td>تعاون تشغيلي + تقارير مشتركة</td><td>شراكة استراتيجية</td></tr>
+      </tbody>
+    </table>
+
+    <h2>معلومات التواصل</h2>
+    <div class="contact-grid">
+      <div class="contact-card teal">
+        <div class="contact-card-name">جمعية سندكم</div>
+        <div class="contact-item">📧 <a href="mailto:support@sanadcom.org.sa">support@sanadcom.org.sa</a></div>
+        <div class="contact-item">📞 +966 053 497 3063</div>
+        <div class="contact-item">🌐 <a href="https://sanadcom.org.sa">sanadcom.org.sa</a></div>
+        <div class="contact-item">📱 @sanadcomm1</div>
+        <div class="contact-item" style="margin-top:12px;font-size:12px;color:#888;">مصرف الراجحي<br>حساب: 525608010522569<br>IBAN: SA9580000525608010522569</div>
+      </div>
+      <div class="contact-card navy">
+        <div class="contact-card-name">ARKAN Sustainable Investment<br><span style="font-size:14px;">أركان الاستدامة للاستثمار</span></div>
+        <div class="contact-item">📧 <a href="mailto:ceo@spi.sa">ceo@spi.sa</a></div>
+        <div class="contact-item">📞 +966 0500 90 10 60</div>
+        <div class="contact-item">📍 الرياض – مركز الملك عبدالله المالي</div>
+        <div class="contact-item" style="margin-top:12px;font-size:12px;color:#888;">سجل تجاري: 1009059968<br>المنطقة الرابعة</div>
+      </div>
+    </div>
+
+    <footer-note>هذا الملف أُعدَّ بمستوى استشاري من قِبل أركان الاستدامة للاستثمار لصالح جمعية سندكم — سري وخاص للاستخدام الرسمي فقط — 2025</footer-note>
+  </div>
+</div>
+
+</div><!-- /wrapper -->
 </body>
 </html>
